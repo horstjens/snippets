@@ -53,11 +53,11 @@ import sys
 #
 
 def foo():
-    print("Bin in 'foo'")
+    print("this is function 'foo' in action")
 
     
 def bar(): 
-    print("Bin in 'bar'")
+    print("this is funciton 'bar' in action ")
     
 
 #
@@ -87,13 +87,13 @@ def get_user_input(menu):
     """
     while True:
         try:
-            choice = int(input("Ihre Wahl?: ")) - 1
+            choice = int(input("Your choice?: ")) - 1
             if 0 <= choice < len(menu):
                 return choice
             else:
                 raise IndexError
         except (ValueError, IndexError):
-            print("Bitte nur Zahlen aus dem Bereich 1 - {} eingeben".format(
+            print("Please use numbers bewteen  1 and {} only".format(
                                                                     len(menu)))
 
 
