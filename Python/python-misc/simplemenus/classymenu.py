@@ -153,13 +153,13 @@ class Menu:
     def get_user_input(self):
         while True:
             try:
-                choice = int(input("Ihre Wahl?: ")) - 1
+                choice = int(input("Your choice is ?: ")) - 1
                 if 0 <= choice < len(self.context.items):
                     return choice
                 else:
                     raise IndexError
             except (ValueError, IndexError):
-                print("Bitte nur Zahlen aus dem Bereich 1..{} eingeben".format(
+                print("please only enter numbers between 1 and {}".format(
                                                     len(self.context.items)))
 
     def run(self):
@@ -182,21 +182,21 @@ class Menu:
 def main():
     # We build up some demonstration menu as in the other menu systems.
     # Now we can use classes to create menu objects...
-    menu = Menu("Hauptmenü")
-    menu.append("Hallo", hello)
+    menu = Menu("Main menu")
+    menu.append("Hello", hello)
     menu.append("Python", python)
     
-    sub = Menu("Submenü")
+    sub = Menu("Sub menu")
     sub.append("Action", nothing)
 
     # ... or to create menu objects that we can later on
-    subsub = Menu("Subsubmenü")
+    subsub = Menu("Subsub menu")
     subsub.append("Special", special)
     # ... easily add to another menu as submenu
     sub.append_submenu(subsub)
 
-    another_sub = Menu("Another Submenü")
-    another_sub.append("Noch mehr Action", nothing)
+    another_sub = Menu("Another Sub menu")
+    another_sub.append("more action", nothing)
     # wait a second, we do not need that... we have `menu.finish()`!
     #another_sub.append("Back", menu)
 
