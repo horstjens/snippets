@@ -82,7 +82,7 @@ import sys
 #
 
 def hello():
-    print("Hallo Welt!")
+    print("Hello world!")
 
     
 def python():
@@ -122,13 +122,13 @@ def get_user_input(entries):
     """
     while True:
         try:
-            choice = int(input("Ihre Wahl?: ")) - 1
+            choice = int(input("Your choice is ?: ")) - 1
             if 0 <= choice < len(entries):
                 return choice
             else:
                 raise IndexError
         except (ValueError, IndexError):
-            print("Bitte nur Zahlen aus dem Bereich 1 - {} eingeben".format(
+            print("Please enter numbers between 1 and {} only".format(
                                                                 len(entries)))
 
 
@@ -170,19 +170,19 @@ def main():
     # we can leave the menu back to the 'root'-menu.
     menu = {
         "root": {
-            "title": "Hauptmenü",
+            "title": "main menu",
             "items": (
-                ("Hallo", hello),
+                ("Hello", hello),
                 ("Python", python),
                 ("Submenu", "submenu"),
                 ("Exit", lambda: sys.exit(0))
             )
         },
         "submenu": {
-            "title": "Submenü",
+            "title": "Sub menu",
             "items": (
-                ("Spezial", special),
-                ("Zurück", "root"),
+                ("Special", special),
+                ("Back", "root"),
             )
         }
     }
