@@ -75,7 +75,7 @@ import sys
 #
 
 def hello():
-    print("Hallo Welt!")
+    print("Hello World!")
 
     
 def python():
@@ -113,14 +113,14 @@ def get_user_input(menu):
     """
     while True:
         try:
-            choice = int(input("Ihre Wahl?: ")) - 1
+            choice = int(input("Your choice is ?: ")) - 1
             if 0 <= choice < len(menu):
                 return choice
             else:
                 raise IndexError
         except (ValueError, IndexError):
-            print("Bitte nur Zahlen aus dem Bereich 1 - {} eingeben".format(
-                                                                    len(menu)))
+            print("please enter numbers between 1 and {} only".format(
+                                                             len(menu)))
 
    
 def handle_menu(menudef):
@@ -145,7 +145,7 @@ def handle_menu(menudef):
         menu = menudef[category]
         print_menu(menu)
         choice = get_user_input(menu)
-        _, command = menu[choice]
+        _, command = menu[choice]       # the _ is a name vor a variable
         # here is the 'submenu'-magic. Just change the dictionary key and go
         # on in the loop, so the chosen submenu will be handled.
         if isinstance(command, str):
@@ -163,11 +163,12 @@ def main():
             ("Hallo", hello),
             ("Python", python),
             ("Submenu", "submenu"),
-            ("Exit", lambda: sys.exit(0))
+            # to handle a function with parameters, use lambda:
+            ("Exit", lambda: sys.exit(0)) 
         ),
         "submenu": (
-            ("Spezial", special),
-            ("Zurück", "root"),
+            ("Special", special),
+            ("Back", "root"),
         )
     }
     
